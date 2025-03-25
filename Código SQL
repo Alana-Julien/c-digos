@@ -1,0 +1,91 @@
+CREATE DATABASE academia;
+USE academia;
+
+-- Tabela de Planos
+CREATE TABLE TbPlano (
+    id_plano INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    valor_mensal DECIMAL(10,2) NOT NULL,
+    duracao INT NOT NULL
+);
+
+-- Tabela de Alunos
+CREATE TABLE TbAluno (
+    id_aluno INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100),
+    endereco TEXT,
+    id_plano INT,
+    FOREIGN KEY (id_plano) REFERENCES TbPlano(id_plano)
+);
+
+-- Tabela de Pagamentos
+CREATE TABLE TbPagamento (
+    id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    data_pagamento DATE NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    metodo_pagamento VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES TbAluno(id_aluno)
+);
+
+-- Tabela de Instrutores
+CREATE TABLE TbInstrutor (
+    id_instrutor INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especialidade VARCHAR(100)
+);
+
+-- Tabela de Treinos
+CREATE TABLE TbTreino (
+    id_treino INT AUTO_INCREMENT PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    objetivo TEXT,
+    data_inicio DATE NOT NULL,
+    data_fim DATE,
+    id_instrutor INT NOT NULL,
+    FOREIGN KEY (id_aluno) REFERENCES TbAluno(id_aluno),
+    FOREIGN KEY (id_instrutor) REFERENCES TbInstrutor(id_instrutor)
+);
+
+-- Tabela de Exercícios
+CREATE TABLE TbExercicio (
+    id_exercicio INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    grupo_muscular VARCHAR(100)
+);
+
+-- Tabela de Relacionamento Treino-Exercícios
+CREATE TABLE TbTreino_Exercicios (
+    id_treino INT NOT NULL,
+    id_exercicio INT NOT NULL,
+    series INT NOT NULL,
+    repeticoes INT NOT NULL,
+    descanso INT NOT NULL,
+    PRIMARY KEY (id_treino, id_exercicio),
+    FOREIGN KEY (id_treino) REFERENCES TbTreino(id_treino),
+    FOREIGN KEY (id_exercicio) REFERENCES TbExercicio(id_exercicio)
+);
+
+-- Tabela de Aulas
+CREATE TABLE TbAula (
+    id_aula INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    horario TIME NOT NULL,
+    id_instrutor INT NOT NULL,
+    FOREIGN KEY (id_instrutor) REFERENCES TbInstrutor(id_instrutor)
+);
+
+-- Tabela de Equipamentos
+CREATE TABLE TbEquipamento (
+    id_equipamento INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    tipo VARCHAR(50),
+    data_aquisicao DATE NOT NULL,
+    status ENUM('ativo', 'inativo') NOT NULL,
+    id_aula INT,
+    FOREIGN KEY (id_aula) REFERENCES TbAula(id_aula)
+);
