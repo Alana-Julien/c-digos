@@ -1,0 +1,133 @@
+class Aluno {
+    private int idAluno;
+    private String nome;
+    private String dataNascimento;
+    private String telefone;
+    private String email;
+    private String endereco;
+    private Plano plano;
+
+    // Getters e Setters
+    public int getIdAluno() { return idAluno; }
+    public void setIdAluno(int idAluno) { this.idAluno = idAluno; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getDataNascimento() { return dataNascimento; }
+    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+    public Plano getPlano() { return plano; }
+    public void setPlano(Plano plano) { this.plano = plano; }
+}
+
+class Plano {
+    private int idPlano;
+    private String nome;
+    private double valorMensal;
+    private String duracao;
+
+    public int getIdPlano() { return idPlano; }
+    public void setIdPlano(int idPlano) { this.idPlano = idPlano; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public double getValorMensal() { return valorMensal; }
+    public void setValorMensal(double valorMensal) { this.valorMensal = valorMensal; }
+    public String getDuracao() { return duracao; }
+    public void setDuracao(String duracao) { this.duracao = duracao; }
+}
+
+class Instrutor {
+    private int idInstrutor;
+    private String nome;
+    private String especialidade;
+
+    public int getIdInstrutor() { return idInstrutor; }
+    public void setIdInstrutor(int idInstrutor) { this.idInstrutor = idInstrutor; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getEspecialidade() { return especialidade; }
+    public void setEspecialidade(String especialidade) { this.especialidade = especialidade; }
+}
+
+class Exercicio {
+    private int idExercicio;
+    private String nome;
+    private String descricao;
+    private String grupoMuscular;
+
+    public int getIdExercicio() { return idExercicio; }
+    public void setIdExercicio(int idExercicio) { this.idExercicio = idExercicio; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public String getGrupoMuscular() { return grupoMuscular; }
+    public void setGrupoMuscular(String grupoMuscular) { this.grupoMuscular = grupoMuscular; }
+}
+
+class Treino {
+    private int idTreino;
+    private Aluno aluno;
+    private String objetivo;
+    private String dataInicio;
+    private String dataFim;
+    private Instrutor instrutor;
+    private List<TreinoExercicio> exercicios;
+
+    public int getIdTreino() { return idTreino; }
+    public void setIdTreino(int idTreino) { this.idTreino = idTreino; }
+    public Aluno getAluno() { return aluno; }
+    public void setAluno(Aluno aluno) { this.aluno = aluno; }
+    public String getObjetivo() { return objetivo; }
+    public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
+    public String getDataInicio() { return dataInicio; }
+    public void setDataInicio(String dataInicio) { this.dataInicio = dataInicio; }
+    public String getDataFim() { return dataFim; }
+    public void setDataFim(String dataFim) { this.dataFim = dataFim; }
+    public Instrutor getInstrutor() { return instrutor; }
+    public void setInstrutor(Instrutor instrutor) { this.instrutor = instrutor; }
+    public List<TreinoExercicio> getExercicios() { return exercicios; }
+    public void setExercicios(List<TreinoExercicio> exercicios) { this.exercicios = exercicios; }
+}
+
+class TreinoExercicio {
+    private Treino treino;
+    private Exercicio exercicio;
+    private int series;
+    private int repeticoes;
+    private int descanso;
+
+    public Treino getTreino() { return treino; }
+    public void setTreino(Treino treino) { this.treino = treino; }
+    public Exercicio getExercicio() { return exercicio; }
+    public void setExercicio(Exercicio exercicio) { this.exercicio = exercicio; }
+    public int getSeries() { return series; }
+    public void setSeries(int series) { this.series = series; }
+    public int getRepeticoes() { return repeticoes; }
+    public void setRepeticoes(int repeticoes) { this.repeticoes = repeticoes; }
+    public int getDescanso() { return descanso; }
+    public void setDescanso(int descanso) { this.descanso = descanso; }
+}
+
+class Pagamento {
+    private int idPagamento;
+    private Aluno aluno;
+    private String dataPagamento;
+    private double valor;
+    private String metodoPagamento;
+
+    public int getIdPagamento() { return idPagamento; }
+    public void setIdPagamento(int idPagamento) { this.idPagamento = idPagamento; }
+    public Aluno getAluno() { return aluno; }
+    public void setAluno(Aluno aluno) { this.aluno = aluno; }
+    public String getDataPagamento() { return dataPagamento; }
+    public void setDataPagamento(String dataPagamento) { this.dataPagamento = dataPagamento; }
+    public double getValor() { return valor; }
+    public void setValor(double valor) { this.valor = valor; }
+    public String getMetodoPagamento() { return metodoPagamento; }
+    public void setMetodoPagamento(String metodoPagamento) { this.metodoPagamento = metodoPagamento; }
+}
